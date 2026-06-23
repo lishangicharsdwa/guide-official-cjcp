@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>德州扑克下载 · 知识库入口</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f8fafc;
+            color: #1f2937;
+            line-height: 1.6;
+            padding: 0 20px 60px;
+        }
+
+        .wrapper {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        /* 顶部导航感 */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0 12px;
+            border-bottom: 2px solid #ccf0e6;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .site-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #0b5e4b;
+            letter-spacing: 0.5px;
+        }
+
+        .site-badge span {
+            background: #e2f3ef;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            color: #0a5c4a;
+            font-weight: 500;
+        }
+
+        .meta-note {
+            font-size: 0.85rem;
+            color: #3a6b5f;
+            background: #e8f5f1;
+            padding: 6px 14px;
+            border-radius: 40px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .meta-note::before {
+            content: "📌";
+            font-size: 0.9rem;
+        }
+
+        /* HERO 区域 – 知识库入口特征 */
+        .hero {
+            padding: 40px 0 32px;
+            text-align: left;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 650;
+            letter-spacing: -0.3px;
+            line-height: 1.2;
+            color: #0b4f41;
+            max-width: 680px;
+        }
+
+        .hero h1 small {
+            display: block;
+            font-size: 1rem;
+            font-weight: 400;
+            color: #3d7264;
+            margin-top: 12px;
+            letter-spacing: 0.2px;
+            line-height: 1.5;
+        }
+
+        .hero p {
+            margin-top: 16px;
+            color: #2f5b50;
+            max-width: 600px;
+            font-size: 1.05rem;
+        }
+
+        /* 网格卡片区 + 目录感布局 */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 24px;
+            margin: 32px 0;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 24px 22px;
+            box-shadow: 0 6px 18px rgba(13, 76, 64, 0.06), 0 2px 4px rgba(0, 30, 20, 0.04);
+            border: 1px solid #d9eee8;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 12px 28px rgba(10, 80, 65, 0.08);
+            transform: translateY(-2px);
+            border-color: #9dcdbf;
+        }
+
+        .card .emoji-icon {
+            font-size: 1.8rem;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #0c4b3e;
+            margin-bottom: 8px;
+            letter-spacing: -0.2px;
+        }
+
+        .card p, .card li {
+            font-size: 0.95rem;
+            color: #2d5247;
+            margin-bottom: 6px;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 6px;
+        }
+
+        .card ul li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #308570;
+            font-weight: 600;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #d0ece2;
+            color: #0b5a48;
+            font-size: 0.75rem;
+            padding: 2px 12px;
+            border-radius: 30px;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+
+        /* 说明区 + 提示区 (混排) */
+        .info-zone {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px;
+            margin: 28px 0 24px;
+            padding: 24px 0;
+            border-top: 1px solid #cee6de;
+            border-bottom: 1px solid #cee6de;
+        }
+
+        .info-block {
+            flex: 2 1 300px;
+        }
+
+        .info-block h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #0c5644;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-block p {
+            font-size: 0.95rem;
+            color: #2a5548;
+            margin-bottom: 10px;
+        }
+
+        .info-block .highlight-link {
+            background: #e3f3ee;
+            padding: 6px 12px;
+            border-radius: 40px;
+            display: inline-block;
+            margin-top: 4px;
+        }
+
+        .tip-block {
+            flex: 1.5 1 220px;
+            background: #e6f4ef;
+            padding: 20px 22px 22px;
+            border-radius: 24px;
+            border-left: 4px solid #1f8a70;
+        }
+
+        .tip-block h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #074f3e;
+            margin-bottom: 6px;
+        }
+
+        .tip-block p {
+            font-size: 0.95rem;
+            color: #1f5444;
+        }
+
+        .tip-block .small-link {
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        /* 相关信息区 – FAQ 摘要风格 */
+        .related-section {
+            margin: 20px 0 18px;
+        }
+
+        .related-section h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #095342;
+            margin-bottom: 14px;
+            letter-spacing: -0.2px;
+        }
+
+        .faq-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 16px;
+        }
+
+        .faq-item {
+            background: white;
+            padding: 18px 18px 14px;
+            border-radius: 20px;
+            border: 1px solid #d1e7df;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            color: #0c4c3d;
+            margin-bottom: 4px;
+            font-size: 0.95rem;
+        }
+
+        .faq-item p {
+            font-size: 0.9rem;
+            color: #2d5b4d;
+        }
+
+        /* 链接嵌入句子样式 */
+        a {
+            color: #11755a;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border 0.15s;
+        }
+
+        a:hover {
+            border-bottom-color: #11755a;
+            color: #064a3a;
+        }
+
+        .inline-link-wrap {
+            background: #ecf9f4;
+            padding: 0 6px;
+            border-radius: 12px;
+        }
+
+        /* 底部 */
+        .footer-note {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #d2e6de;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.85rem;
+            color: #4d7569;
+        }
+
+        .footer-note a {
+            font-weight: 400;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            body { padding: 0 14px 40px; }
+            .hero h1 { font-size: 1.8rem; }
+            .grid-cards { gap: 16px; }
+            .card { padding: 20px 18px; }
+            .info-zone { padding: 20px 0; }
+            .tip-block { padding: 16px; }
+            .faq-summary { grid-template-columns: 1fr; }
+            .top-bar { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+
+    <!-- 顶部 + 再次访问、收藏提示 -->
+    <div class="top-bar">
+        <div class="site-badge">
+            📇 德州扑克·知识库
+            <span>v1.2</span>
+        </div>
+        <div class="meta-note">
+            再次访问 · 收藏本站
+        </div>
+    </div>
+
+    <!-- HERO 从持续关注 / 再次访问切入 -->
+    <section class="hero">
+        <h1>
+            德州扑克策略与资源
+            <small>反复查阅 · 持续关注 · 一手信息源</small>
+        </h1>
+        <p>
+            这里是围绕德州扑克整理的知识入口。无论你是刚接触规则，还是想回顾翻牌前要点，都适合把本页收藏起来。<br>
+            内容保持更新，便于你每次回来都能找到需要的部分。
+        </p>
+    </section>
+
+    <!-- 网格卡片：知识库目录感 -->
+    <div class="grid-cards">
+        <div class="card">
+            <div class="emoji-icon">📖</div>
+            <h3>基础 · 规则区</h3>
+            <ul>
+                <li>手牌强度与位置概念</li>
+                <li>翻前起手牌表格</li>
+                <li>下注轮次与底池计算</li>
+            </ul>
+            <span class="tag">新手友好</span>
+        </div>
+        <div class="card">
+            <div class="emoji-icon">🧠</div>
+            <h3>进阶 · 思考模型</h3>
+            <ul>
+                <li>范围构建与频率</li>
+                <li>底池赔率快速心算</li>
+                <li>剥削与平衡</li>
+            </ul>
+            <span class="tag">持续迭代</span>
+        </div>
+        <div class="card">
+            <div class="emoji-icon">📁</div>
+            <h3>工具 & 下载</h3>
+            <p>客户端、辅助工具及资料包索引。推荐通过 <a href="https://download-texaspoker.com">德州扑克下载</a> 获取最新稳定版本。</p>
+            <span class="tag">实用入口</span>
+        </div>
+        <div class="card">
+            <div class="emoji-icon">🔖</div>
+            <h3>收藏 · 备忘</h3>
+            <ul>
+                <li>常见缩写速查</li>
+                <li>锦标赛结构提醒</li>
+                <li>现金局 bankroll 建议</li>
+            </ul>
+            <span class="tag">随时查阅</span>
+        </div>
+    </div>
+
+    <!-- 说明区 + 提示区 (左右结构) -->
+    <div class="info-zone">
+        <div class="info-block">
+            <h4>📋 关于本知识库</h4>
+            <p>
+                页面以知识库入口形式组织，方便你每次访问时快速定位到具体模块。所有链接指向外部资源或官方渠道。<br>
+                如果你需要完整的客户端程序，可以直接前往 <a href="https://download-texaspoker.com">德州扑克下载</a> 页面，那里提供了多平台支持说明。
+            </p>
+            <p>
+                本站不存储安装包，仅作为导航和信息聚合。建议将本页添加至浏览器收藏夹，便于后续回来。
+            </p>
+        </div>
+        <div class="tip-block">
+            <h4>💡 提示区</h4>
+            <p>
+                定期回来看看——策略思路、工具版本和推荐资源都会随社区更新而调整。<br>
+                另外，<strong>收藏此页</strong>比单靠搜索更稳；遇到版本变动时，页内会做对应标注。
+            </p>
+            <div class="small-link">
+                → <a href="https://download-texaspoker.com">德州扑克下载</a> 直达页面
+            </div>
+        </div>
+    </div>
+
+    <!-- 相关信息区 · FAQ 摘要 -->
+    <div class="related-section">
+        <h4>📎 相关信息 · 常被问到</h4>
+        <div class="faq-summary">
+            <div class="faq-item">
+                <strong>哪里下载比较稳妥？</strong>
+                <p>始终推荐通过官方渠道 <a href="https://download-texaspoker.com">德州扑克下载</a> 获取，避免第三方捆绑。</p>
+            </div>
+            <div class="faq-item">
+                <strong>页面会频繁更新吗？</strong>
+                <p>计划每月做一次内容审查，并在卡片区标注更新tag。值得再次访问。</p>
+            </div>
+            <div class="faq-item">
+                <strong>移动端阅读方便吗？</strong>
+                <p>本页采用网格和响应式设计，手机上也清晰。可以随时收藏。</p>
+            </div>
+            <div class="faq-item">
+                <strong>有策略讨论区吗？</strong>
+                <p>当前页面聚焦索引；后续可能会扩展社区链接，请保持关注。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底栏 – 再次强调收藏与持续关注 -->
+    <div class="footer-note">
+        <span>📌 可收藏本页 · 持续关注更新</span>
+        <span>
+            <a href="https://download-texaspoker.com">德州扑克下载</a> 
+            <span style="opacity:0.5; margin:0 4px;">·</span> 
+            <a href="#" style="border-bottom:1px dashed #91b9ab;">反馈</a>
+        </span>
+    </div>
+
+</div>
+</body>
+</html>
