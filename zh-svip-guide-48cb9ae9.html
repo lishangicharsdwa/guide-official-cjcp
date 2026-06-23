@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>leyu · 知识型内容聚合</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f8f5f0;
+            font-family: 'Georgia', 'Noto Serif SC', 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #2c2b28;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 920px;
+            margin: 0 auto;
+            background: rgba(255, 250, 240, 0.7);
+            padding: 2.5rem 2rem;
+            border-radius: 24px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+        }
+
+        /* ── hero ── */
+        .hero {
+            text-align: center;
+            padding: 3rem 0 1.5rem;
+            border-bottom: 1px solid #e2dcd0;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: #3d392f;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #6b6558;
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        /* ── quote block ── */
+        .insight-block {
+            background: #ede8de;
+            border-left: 5px solid #b8a78b;
+            padding: 1.6rem 2rem;
+            margin: 2.2rem 0;
+            border-radius: 0 16px 16px 0;
+            font-style: normal;
+        }
+
+        .insight-block p {
+            font-size: 1.02rem;
+            color: #3d392f;
+        }
+
+        .insight-block .source {
+            display: block;
+            margin-top: 0.6rem;
+            font-size: 0.9rem;
+            color: #7a7264;
+        }
+
+        /* ── section titles ── */
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: #3d392f;
+            margin: 2.4rem 0 1rem;
+            border-bottom: 1px dashed #d6cebd;
+            padding-bottom: 0.3rem;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #4d483b;
+            margin: 1.6rem 0 0.6rem;
+        }
+
+        /* ── content ── */
+        p {
+            margin-bottom: 1.1rem;
+            font-size: 1.02rem;
+        }
+
+        ul {
+            margin: 0.8rem 0 1.5rem 1.8rem;
+            list-style: none;
+        }
+
+        ul li {
+            margin-bottom: 0.6rem;
+            padding-left: 1.4rem;
+            position: relative;
+        }
+
+        ul li::before {
+            content: "·";
+            position: absolute;
+            left: 0;
+            color: #b8a78b;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* ── advantage cards ── */
+        .advantage-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            margin: 1.8rem 0 1rem;
+        }
+
+        .advantage-card {
+            flex: 1 1 200px;
+            background: #fefcf8;
+            padding: 1.5rem 1.2rem;
+            border-radius: 16px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+            border: 1px solid #ebe5d9;
+        }
+
+        .advantage-card h4 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #3d392f;
+            margin-bottom: 0.5rem;
+        }
+
+        .advantage-card p {
+            font-size: 0.95rem;
+            color: #5d584c;
+            margin-bottom: 0;
+        }
+
+        /* ── FAQ summary ── */
+        .faq-item {
+            margin: 1.2rem 0;
+            padding: 0.8rem 0 0.8rem 1.2rem;
+            border-left: 3px solid #d6cebd;
+        }
+
+        .faq-item strong {
+            display: block;
+            color: #3d392f;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .faq-item p {
+            color: #5d584c;
+            margin-bottom: 0;
+            font-size: 0.98rem;
+        }
+
+        /* ── footer links ── */
+        .footer-links {
+            margin-top: 3rem;
+            padding-top: 1.8rem;
+            border-top: 1px solid #e2dcd0;
+            font-size: 0.95rem;
+            color: #6b6558;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .footer-links a {
+            color: #6b6558;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .footer-links a:hover {
+            border-bottom-color: #b8a78b;
+        }
+
+        .footer-links .leyu-link {
+            font-weight: 500;
+        }
+
+        /* ── responsive ── */
+        @media (max-width: 640px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+            .container {
+                padding: 1.8rem 1.2rem;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .advantage-grid {
+                flex-direction: column;
+            }
+            .footer-links {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- hero -->
+    <div class="hero">
+        <h1>leyu</h1>
+        <p>知识型内容聚合 · 回归与再发现的起点</p>
+    </div>
+
+    <!-- insight block 引用／提示框 -->
+    <div class="insight-block">
+        <p>“信息的价值不在于第一次读到它，而在于你愿意第二次打开它。”<br>—— 持续关注，是对内容质量最自然的投票。</p>
+        <span class="source">— 阅读札记，2025</span>
+    </div>
+
+    <!-- 说明区：从再次访问、收藏与持续关注展开 -->
+    <section>
+        <h2>为什么值得再次打开？</h2>
+        <p>
+            在信息快速流动的时代，我们往往匆匆滑过许多页面，再回头时已找不到当初的路径。<strong>leyu</strong> 所汇集的资料、分析和随笔，
+            并不追求一次性的流量，而是希望成为你书签栏里那个值得反复翻看的角落。无论是某篇行业观察的后续思考，
+            还是一则工具使用笔记的更新，再次访问时总能发现新的注解与关联。
+        </p>
+        <p>
+            收藏一个链接，本质上是为未来的自己种下一颗锚点。而持续关注，则意味着相信这个锚点会不断生长。
+            这也是 <a href="https://zh-svip-leyu.com" class="leyu-link">leyu</a> 在做的事——
+            让每一篇内容都有被回访的理由，而非仅仅在时间线上闪现一次。
+        </p>
+    </section>
+
+    <!-- 优势区：卡片 -->
+    <section>
+        <h2>几个反复回访的理由</h2>
+        <div class="advantage-grid">
+            <div class="advantage-card">
+                <h4>内容可追溯</h4>
+                <p>每篇文章附有来源与更新记录，方便你回溯上下文，理解观点的演变。</p>
+            </div>
+            <div class="advantage-card">
+                <h4>低噪阅读</h4>
+                <p>无弹窗、无自动播放、无过度推送。页面只为阅读而存在，专注内容本身。</p>
+            </div>
+            <div class="advantage-card">
+                <h4>长尾价值</h4>
+                <p>不追逐热点，更侧重基础概念与长久适用的方法，数月后打开仍有参考意义。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ 摘要 -->
+    <section>
+        <h2>常见疑问 · 简短回答</h2>
+
+        <div class="faq-item">
+            <strong>为什么我上次收藏的页面内容变了？</strong>
+            <p>部分文章会进行修订或增补，我们会在文末标注修改日期。你可以通过历史版本链接查看原始内容。</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>如何保存我感兴趣的主题？</strong>
+            <p>浏览器书签是最直接的方式。此外，leyu 提供 RSS 订阅（页面底部可见），适合长期跟踪更新。</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>内容是否会删除？</strong>
+            <p>除非特殊情况，已发布的内容会保留。如果某个页面被归档，会在原链接处显示归档说明及替代资源。</p>
+        </div>
+
+        <p style="margin-top:1.2rem; font-size:0.95rem; color:#6b6558;">
+            更多问题可以在相关页面留言，我们会定期整理并补充 FAQ。
+        </p>
+    </section>
+
+    <!-- 底部链接 -->
+    <div class="footer-links">
+        <span>
+            再次访问 · <a href="https://zh-svip-leyu.com">leyu</a>
+        </span>
+        <span>
+            <a href="#">RSS 订阅</a> · <a href="#">关于本站</a> · <a href="#">归档</a>
+        </span>
+        <span style="color:#b8a78b; font-size:0.85rem;">
+            © 2025 · 持续关注
+        </span>
+    </div>
+
+</div>
+
+</body>
+</html>
